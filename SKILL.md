@@ -2,7 +2,7 @@
 name: explain-me
 description: Use when the user asks to understand code changes, PRs, diffs, commits, or recent agent work. Prepare a rigorous explanation workspace, inspect every changed line internally, map every changed block to user-facing chapters, then teach the change incrementally without running tests.
 version: 1.0.0
-author: Hermes Agent
+author: KIM UI GEUN
 license: MIT
 metadata:
   hermes:
