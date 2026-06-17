@@ -37,7 +37,7 @@ Do **not** auto-trigger this skill unless the user asks for code explanation or 
 3. **Track completeness by diff hunk / changed block, not just by file.** Every changed block must be inventoried and mapped.
 4. **Do not rely on the diff alone.** Inspect enough surrounding code, call paths, tests, docs, and configuration to explain meaning and impact.
 5. **Do not run tests.** Read relevant tests to understand protection/coverage, but do not execute test commands as part of this skill.
-6. **Write artifacts before teaching.** Always prepare `plan.md`, `README.md`, and `FIXME.md` under one explanation workspace.
+6. **Write artifacts before teaching.** Always prepare `plan.md`, `EXPLANATION.md`, and `FIXME.md` under one explanation workspace.
 7. **Teach incrementally.** Explain one small unit at a time, pause, and continue only when the user is ready unless they explicitly ask for an uninterrupted full explanation.
 8. **Record only user-decided fixes.** Suggestions become `FIXME.md` entries only after the user decides what to do.
 
@@ -94,7 +94,7 @@ Always create one explanation workspace:
 ```text
 docs/explains/YYYYMMDD-topic/
 ├── plan.md
-├── README.md
+├── EXPLANATION.md
 └── FIXME.md
 ```
 
@@ -139,9 +139,9 @@ Suggested changed block fields:
 - Explanation chapter mapping:
 ```
 
-### `README.md` — User-Facing Explanation Document
+### `EXPLANATION.md` — User-Facing Explanation Document
 
-Optimize `README.md` for understanding and readability. Always create it. It is the final explanation document used as the basis for chat teaching.
+Optimize `EXPLANATION.md` for understanding and readability. Always create it. It is the final explanation document used as the basis for chat teaching.
 
 Use this structure:
 
@@ -210,7 +210,7 @@ Record decisions clearly:
 3. **Inspect context beyond the diff.** For every changed block, inspect enough surrounding code, callers/callees, tests, docs, and config to explain the change accurately.
 4. **Read tests, but do not run tests.** Explain what tests protect or document; do not claim runtime correctness.
 5. **Build `plan.md`.** Inventory every changed block and map each one to explanation chapters.
-6. **Build `README.md`.** Reorganize by intent and understanding, not raw file order.
+6. **Build `EXPLANATION.md`.** Reorganize by intent and understanding, not raw file order.
 7. **Create `FIXME.md`.** Leave it neutral until the user decides follow-up changes.
 8. **Brief the user before teaching.** Show a short briefing with:
    - chosen scope,
@@ -237,7 +237,7 @@ Use a natural narrative style, but keep each unit concise.
 
 ## Interactive Teaching Workflow
 
-Do not paste the entire `README.md` into chat unless the user explicitly asks for a full uninterrupted explanation.
+Do not paste the entire `EXPLANATION.md` into chat unless the user explicitly asks for a full uninterrupted explanation.
 
 For each explanation unit:
 
@@ -278,7 +278,7 @@ Do not:
 4. **Explaining in file order.** Use intent/meaning order.
 5. **Skipping tests because tests are not executed.** Read relevant tests even though you do not run them.
 6. **Inventing external author intent.** Mark uncertainty and ground claims in code/PR/test evidence.
-7. **Dumping the whole README into chat.** Use it as preparation and reference; teach incrementally.
+7. **Dumping the whole EXPLANATION into chat.** Use it as preparation and reference; teach incrementally.
 8. **Writing agent suggestions directly into FIXME.** FIXME is for user-decided follow-ups only.
 9. **Overwriting old explanation workspaces.** Always create a unique directory.
 10. **Treating this as a verification skill.** It explains code and review implications; it does not verify runtime correctness.
@@ -292,15 +292,15 @@ Before starting interactive teaching, verify:
 - [ ] Workspace exists under `docs/explains/YYYYMMDD-topic/`.
 - [ ] Existing workspace was not overwritten.
 - [ ] `plan.md` exists.
-- [ ] `README.md` exists.
+- [ ] `EXPLANATION.md` exists.
 - [ ] `FIXME.md` exists.
 - [ ] Every changed file is inventoried.
 - [ ] Every diff hunk / changed block is inventoried.
-- [ ] Every changed block maps to at least one README chapter.
+- [ ] Every changed block maps to at least one EXPLANATION chapter.
 - [ ] Surrounding code and relevant call paths were inspected.
 - [ ] Relevant tests/docs/config were read when applicable.
 - [ ] No tests were run as part of this skill.
-- [ ] README uses the required structure.
+- [ ] EXPLANATION uses the required structure.
 - [ ] User briefing includes scope, output directory, changed file count, changed block count, and chapter list.
 
 Before finishing the whole explanation, verify:
@@ -309,3 +309,7 @@ Before finishing the whole explanation, verify:
 - [ ] User questions were answered and the explanation returned to the plan.
 - [ ] Possible issues were presented as suggestions, not decisions.
 - [ ] User-decided follow-ups, if any, were recorded in `FIXME.md`.
+
+## Reference
+
+- `references/session-2026-06-18-design-decisions.md` captures the original session decisions and rationale behind this workflow.

@@ -10,7 +10,7 @@ A portable agent skill for rigorous code-change explanations.
 - Creates a workspace under `docs/explains/YYYYMMDD-topic/`.
 - Always writes:
   - `plan.md` — internal audit trail and changed-block mapping.
-  - `README.md` — user-facing explanation document.
+  - `EXPLANATION.md` — user-facing explanation document.
   - `FIXME.md` — user-decided follow-up changes only.
 - Reads relevant tests/docs/config for understanding, but does **not** run tests.
 - Explains in small interactive units and pauses for user questions.
