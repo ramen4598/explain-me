@@ -1,6 +1,6 @@
 ---
 name: explain-me
-description: Use when the user asks to understand code changes, PRs, diffs, commits, or recent agent work. Prepare a rigorous explanation workspace, inspect every changed line internally, map every changed block to user-facing chapters, then teach the change incrementally without running tests.
+description: Use only when the user explicitly invokes the `explain-me` skill by name, e.g. "explain-me 해줘", "use explain-me", or `/skill explain-me`. Do not use for ordinary requests to explain, summarize, review, verify, or walk through code unless `explain-me` is named.
 version: 1.0.0
 author: KIM UI GEUN
 license: MIT
@@ -21,14 +21,18 @@ The primary responsibility is explanation. The agent may add review-oriented con
 
 ## When to Use
 
-Use this skill when:
+Use this skill **only** when the user explicitly invokes it by name:
 
-- The user asks to understand code changes, e.g. "코드 설명해줘", "이 PR 설명해줘", "explain-me 해줘", "walk me through this diff".
-- Project instructions such as `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, or similar say to use `explain-me` after work.
-- The user wants to understand agent-written changes before reviewing or accepting them.
-- The user wants to understand an external PR, branch comparison, patch, or diff written by someone else.
+- "explain-me 해줘"
+- "use explain-me"
+- "run explain-me on this PR"
+- `/skill explain-me`
 
-Do **not** auto-trigger this skill unless the user asks for code explanation or project instructions explicitly require it after a task. Do not use this as a general runtime verification workflow; tests are read for understanding but not executed.
+Do **not** use this skill for ordinary requests such as "코드 설명해줘", "이 PR 설명해줘", "walk me through this diff", "summarize this change", or "review this PR" unless the user also names `explain-me`.
+
+Do **not** auto-trigger this skill from project instructions such as `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, or similar files. If those files mention `explain-me` but the user did not explicitly invoke it in the current request, ignore that mention and proceed without this skill.
+
+Do **not** use this as a general runtime verification workflow; tests are read for understanding but not executed.
 
 ## Core Rules
 
